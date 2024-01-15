@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_date_general_wizard_form" model="ir.ui.view">
+            <field name="name">kardex.general.form</field>
+            <field name="model">kardex.general</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="product_id"/>
+                        <!-- Otros campos que quieras mostrar -->
+                    </group>
+                    <footer>
+                        <button name="generate_excel_report" string="Generate Excel Report" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_stock_kardex_general_wizard" model="ir.actions.act_window">
+            <field name="name">Kardex General</field>
+            <field name="res_model">kardex.general</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_date_general_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_kardex_general" name="Kardex General" parent="stock.menu_warehouse_report" action="action_stock_kardex_general_wizard" sequence="8"/>
+    </data>
+</odoo>
+
